@@ -48,5 +48,79 @@
     </div>
 
     {% include analytics.html %}
+
+    <!-- Iklan melayang bawah -->
+<div id="floating-ad">
+  <div class="ad-content">
+    <span>🌟 Dapatkan energi positif </span>
+    <a href="https://wa.me/628134" target="_blank" class="ad-button">Hubungi</a>
+    <span class="close-ad" onclick="document.getElementById('floating-ad').style.display='none'">&times;</span>
+  </div>
+</div>
+
+<style>
+  #floating-ad {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #fff, #f9f9f9);
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+    text-align: center;
+    z-index: 9999;
+    padding: 10px 0;
+    font-family: sans-serif;
+  }
+
+  .ad-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ad-button {
+    background: #007bff;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .ad-button:hover {
+    background: #0056b3;
+  }
+
+  .close-ad {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff0000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  @media (max-width: 600px) {
+    #floating-ad {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+    .ad-button {
+      padding: 5px 10px;
+    }
+  }
+</style>
+
   </body>
 </html>
