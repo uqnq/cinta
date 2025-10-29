@@ -31,6 +31,19 @@ layout: default
   {% endif %}
 {% endfor %}
 </ul>
+  
+<h3>Related Posts (Random)</h3>
+<ul>
+  {% assign shuffled_posts = site.posts | sample: 5 %}
+  {% for post in shuffled_posts %}
+    {% if post.url != page.url %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small>({{ post.date | date: "%b %d, %Y" }})</small>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
 
 
   <div class="date">
