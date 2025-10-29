@@ -38,7 +38,7 @@ layout: default
 {% assign start_index = current_index | minus: 2 %}
 {% assign end_index = current_index | plus: 2 %}
 
-<h3>Related Posts (by Date)</h3>
+<h3>Related Posts</h3>
 <ul>
 {% for i in (start_index..end_index) %}
   {% assign related_post = site.posts[i] %}
@@ -51,7 +51,7 @@ layout: default
 {% endfor %}
 </ul>
   
-<h3>Related Posts (Random)</h3>
+Random :
 <ul>
   {% assign shuffled_posts = site.posts | sample: 5 %}
   {% for post in shuffled_posts %}
