@@ -8,6 +8,7 @@ layout: default
   <div class="entry">
   {% assign paragraphs = content | split: '</p>' %}
   {% assign halfway = paragraphs.size | divided_by: 2 %}
+  {% assign used_urls = page.url | split: "," %}  <!-- simpan URL yang sudah dipakai -->
 
   {% for paragraph in paragraphs %}
     {{ paragraph }}</p>
@@ -17,18 +18,19 @@ layout: default
       {% assign random_index = site.time | date: "%s" | plus: forloop.index | modulo: all_posts.size %}
       {% assign random_post = all_posts[random_index] %}
 
-      {% if random_post %}
+      {% if random_post and used_urls contains random_post.url == false %}
         <p class="related"><strong>👉 Baca juga:</strong>
         <a href="{{ random_post.url | relative_url }}">{{ random_post.title }}</a></p>
+        {% assign used_urls = used_urls | push: random_post.url %}
       {% endif %}
     {% endif %}
   {% endfor %}
 </div>
 
+<hr>
 
-
-
-  {% assign current_index = 0 %}
+<!-- RELATED POSTS BERDASARKAN URUTAN -->
+{% assign current_index = 0 %}
 {% for post in site.posts %}
   {% if post.url == page.url %}
     {% assign current_index = forloop.index0 %}
@@ -42,27 +44,28 @@ layout: default
 <ul>
 {% for i in (start_index..end_index) %}
   {% assign related_post = site.posts[i] %}
-  {% if related_post and related_post.url != page.url %}
-    <li>
-      <a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a>
-    </li>
+  {% if related_post and related_post.url != page.url and used_urls contains related_post.url == false %}
+    <li><a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a></li>
+    {% assign used_urls = used_urls | push: related_post.url %}
   {% endif %}
 {% endfor %}
 </ul>
-  
-Random :
+
+<hr>
+
+<!-- RANDOM POSTS TAMBAHAN -->
+Random:
 <ul>
   {% assign shuffled_posts = site.posts | sample: 5 %}
   {% for post in shuffled_posts %}
-    {% if post.url != page.url %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
+    {% if post.url != page.url and used_urls contains post.url == false %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {% assign used_urls = used_urls | push: post.url %}
     {% endif %}
   {% endfor %}
 </ul>
 
-
+<hr>
 
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
