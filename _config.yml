@@ -43,8 +43,8 @@ baseurl: ""
 #
 # Pagination settings
 #
-paginate: 7
-paginate_path: "/page:num/"
+# paginate: 7
+# paginate_path: "/page:num/"
 
 #
 # Don't change settings below this line unless necessary
@@ -66,7 +66,7 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate  # ← tambahkan baris ini
+  
 
 # Exclude these files from production
 exclude:
