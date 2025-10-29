@@ -1,0 +1,75 @@
+#
+# This file contains configuration flags to customize your site
+#
+
+# Name of your site (displayed in the header)
+name: JK-now
+
+# Short bio or description (displayed in the header)
+description: Blog
+
+# URL of your avatar or profile pic
+avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
+
+#
+# Flags below are optional
+#
+
+footer-links:
+  dribbble:
+  email:
+  facebook:
+  flickr:
+  github:
+  instagram:
+  linkedin:
+  pinterest:
+  rss:
+  twitter:
+  stackoverflow:
+  youtube:
+  googleplus:
+
+# Disqus and Google Analytics (optional)
+disqus:
+google_analytics:
+
+# Your website URL (used for sitemap and RSS feed)
+url:
+
+# Base URL (leave empty if this is your main GitHub Pages repo)
+baseurl: ""
+
+#
+# Pagination settings
+#
+paginate: 7
+paginate_path: "/page:num/"
+
+#
+# Don't change settings below this line unless necessary
+#
+permalink: /:title
+
+version: v1.2.0
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+sass:
+  style: :expanded
+
+# Use the following plug-ins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate  # ← tambahkan baris ini
+
+# Exclude these files from production
+exclude:
+  - LICENSE
+  - README.md
+  - CNAME
