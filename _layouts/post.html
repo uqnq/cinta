@@ -45,7 +45,6 @@ layout: default
   {% if related_post and related_post.url != page.url %}
     <li>
       <a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a>
-      <small>({{ related_post.date | date: "%b %d, %Y" }})</small>
     </li>
   {% endif %}
 {% endfor %}
@@ -58,11 +57,11 @@ Random :
     {% if post.url != page.url %}
       <li>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <small>({{ post.date | date: "%b %d, %Y" }})</small>
       </li>
     {% endif %}
   {% endfor %}
 </ul>
+
 
 
   <div class="date">
