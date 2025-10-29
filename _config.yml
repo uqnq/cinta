@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: JK-now
+name: CINTA
 
 # Short bio or description (displayed in the header)
 description: Blog
@@ -35,7 +35,7 @@ disqus:
 google_analytics:
 
 # Your website URL (used for sitemap and RSS feed)
-url:
+url:https://cinta.solusijodoh.com
 
 # Base URL (leave empty if this is your main GitHub Pages repo)
 baseurl: ""
