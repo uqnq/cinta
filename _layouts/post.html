@@ -13,14 +13,18 @@ layout: default
     {{ paragraph }}</p>
 
     {% if forloop.index == 2 or forloop.index == halfway %}
-      {% assign random_post = site.posts | sample: 1 | first %}
-      {% if random_post.url != page.url %}
-        <p><strong>Baca juga:</strong> 
+      {% assign all_posts = site.posts | where_exp: "p", "p.url != page.url" %}
+      {% assign random_index = site.time | date: "%s" | modulo: all_posts.size %}
+      {% assign random_post = all_posts[random_index] %}
+
+      {% if random_post %}
+        <p><strong>Baca juga:</strong>
         <a href="{{ random_post.url | relative_url }}">{{ random_post.title }}</a></p>
       {% endif %}
     {% endif %}
   {% endfor %}
 </div>
+
 
 
   {% assign current_index = 0 %}
